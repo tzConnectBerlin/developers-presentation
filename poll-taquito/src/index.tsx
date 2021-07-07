@@ -12,7 +12,7 @@ import { ToastProvider } from "react-toast-notifications";
 
 const network = process.env.REACT_APP_NETWORK || "FLORENCENET";
 export const NETWORK: WalletProviderProps["network"] =
-  network as WalletProviderProps["network"];
+  network.toUpperCase() as WalletProviderProps["network"];
 
 ReactDOM.render(
   <React.StrictMode>
