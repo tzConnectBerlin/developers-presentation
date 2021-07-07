@@ -1,0 +1,62 @@
+{
+  "name": "poll-taquito",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@airgap/beacon-sdk": "^2.2.10",
+    "@date-io/date-fns": "1.x",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
+    "@material-ui/core": "^5.0.0-beta.0",
+    "@material-ui/icons": "^5.0.0-beta.0",
+    "@material-ui/lab": "^5.0.0-alpha.39",
+    "@taquito/beacon-wallet": "^9.2.0",
+    "@taquito/signer": "^9.2.0",
+    "@taquito/taquito": "^9.2.0",
+    "@taquito/utils": "^9.2.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-toast-notifications": "^2.4.1",
+    "@tz-contrib/react-wallet-provider": "^1.0.0-alpha.9",
+    "date-fns": "^2.22.1",
+    "dotenv": "^10.0.0",
+    "formik": "^2.2.9",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "react-toast-notifications": "^2.5.0",
+    "typescript": "^4.1.2",
+    "web-vitals": "^1.0.1",
+    "yup": "^0.32.9"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "node ./deployment/deploy.js"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
