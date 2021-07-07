@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as Yup from "yup";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -12,6 +13,10 @@ import { FormikTextField } from "./FormikTextField";
 export default function VoteCard() {
   const { connected } = useWallet();
   const { addToast } = useToasts();
+  const validationSchema = Yup.object().shape({
+    pollId: Yup.string().required("Required"),
+    pollOption: Yup.number().min(1, "Min value is 1").required("Required"),
+  });
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
@@ -38,8 +43,9 @@ export default function VoteCard() {
       <CardHeader title="Cast your Vote" subheader="Cast your vote here" />
       <CardContent>
         <Formik
-          initialValues={{ pollId: "", pollOption: 0 }}
+          initialValues={{ pollId: "", pollOption: 1 }}
           onSubmit={handleSubmit}
+          validationSchema={validationSchema}
           validateOnChange
           validateOnBlur
         >

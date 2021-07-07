@@ -1,4 +1,5 @@
 import * as React from "react";
+import * as Yup from "yup";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
@@ -13,6 +14,13 @@ import { FormikTextField } from "./FormikTextField";
 export default function CreatePollCard() {
   const { connected } = useWallet();
   const { addToast } = useToasts();
+  const validationSchema = Yup.object().shape({
+    pollId: Yup.string().required("Required"),
+    endDate: Yup.date().required("Required"),
+    noOfOptions: Yup.number()
+      .min(2, "Min 2 options required")
+      .required("Required"),
+  });
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
@@ -45,8 +53,11 @@ export default function CreatePollCard() {
         <Formik
           initialValues={{ pollId: "", endDate: new Date(), noOfOptions: 2 }}
           onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+          validateOnBlur
+          validateOnChange
         >
-          {({ setFieldValue, errors, touched, isValid, dirty }) => (
+          {({ setFieldValue, errors, values, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
                 <Grid item>
