@@ -3,7 +3,7 @@ const { importKey } = require("@taquito/signer");
 const { TezosToolkit, MichelsonMap } = require("@taquito/taquito");
 const pollJSON = require("./poll.json");
 
-const RPC_URL = process.env.RPC_URL;
+const RPC_URL = process.env.REACT_APP_RPC_URL;
 const SECRET_KEY = process.env.SECRET_KEY;
 
 const Tezos = new TezosToolkit(RPC_URL);
