@@ -8,6 +8,7 @@ import { Button, Grid, TextField } from "@material-ui/core";
 import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { createPoll } from "./contract";
 import { useToasts } from "react-toast-notifications";
+import { FormikTextField } from "./FormikTextField";
 
 export default function CreatePollCard() {
   const { connected } = useWallet();
@@ -45,21 +46,16 @@ export default function CreatePollCard() {
           initialValues={{ pollId: "", endDate: new Date(), noOfOptions: 2 }}
           onSubmit={handleSubmit}
         >
-          {({ setFieldValue, errors, touched }) => (
+          {({ setFieldValue, errors, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
                 <Grid item>
                   <Field
-                    component={TextField}
+                    component={FormikTextField}
                     name="pollId"
                     type="text"
                     label="Poll ID"
                     fullWidth
-                    onChange={(e: any) => {
-                      setFieldValue("pollId", e.target.value);
-                    }}
-                    error={touched.pollId && Boolean(errors.pollId)}
-                    helperText={touched.pollId ? errors.pollId : ""}
                   />
                 </Grid>
                 <Grid item>
@@ -80,16 +76,11 @@ export default function CreatePollCard() {
                 </Grid>
                 <Grid item>
                   <Field
-                    component={TextField}
+                    component={FormikTextField}
                     name="noOfOptions"
                     type="number"
                     label="Number of options"
                     fullWidth
-                    onChange={(e: any) => {
-                      setFieldValue("noOfOptions", e.target.value);
-                    }}
-                    error={touched.noOfOptions && Boolean(errors.noOfOptions)}
-                    helperText={touched.noOfOptions ? errors.noOfOptions : ""}
                   />
                 </Grid>
                 <Grid item>
@@ -97,7 +88,7 @@ export default function CreatePollCard() {
                     variant="contained"
                     fullWidth
                     type="submit"
-                    disabled={!connected}
+                    disabled={!connected || !isValid || !dirty}
                   >
                     Submit
                   </Button>

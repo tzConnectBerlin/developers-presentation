@@ -3,10 +3,11 @@ import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import { Formik, Form, Field } from "formik";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { vote } from "./contract";
 import { useToasts } from "react-toast-notifications";
+import { FormikTextField } from "./FormikTextField";
 
 export default function VoteCard() {
   const { connected } = useWallet();
@@ -39,36 +40,28 @@ export default function VoteCard() {
         <Formik
           initialValues={{ pollId: "", pollOption: 0 }}
           onSubmit={handleSubmit}
+          validateOnChange
+          validateOnBlur
         >
-          {({ setFieldValue, errors, touched }) => (
+          {({ setFieldValue, errors, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
                 <Grid item>
                   <Field
-                    component={TextField}
+                    component={FormikTextField}
                     name="pollId"
                     type="text"
                     label="Poll ID"
                     fullWidth
-                    onChange={(e: any) => {
-                      setFieldValue("pollId", e.target.value);
-                    }}
-                    error={touched.pollId && Boolean(errors.pollId)}
-                    helperText={touched.pollId ? errors.pollId : ""}
                   />
                 </Grid>
                 <Grid item>
                   <Field
-                    component={TextField}
+                    component={FormikTextField}
                     name="pollOption"
                     type="number"
                     label="Number of options"
                     fullWidth
-                    onChange={(e: any) => {
-                      setFieldValue("pollOption", e.target.value);
-                    }}
-                    error={touched.pollOption && Boolean(errors.pollOption)}
-                    helperText={touched.pollOption ? errors.pollOption : ""}
                   />
                 </Grid>
                 <Grid item>
@@ -76,7 +69,7 @@ export default function VoteCard() {
                     variant="contained"
                     fullWidth
                     type="submit"
-                    disabled={!connected}
+                    disabled={!connected || !isValid || !dirty}
                   >
                     Submit
                   </Button>

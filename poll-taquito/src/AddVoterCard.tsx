@@ -1,16 +1,28 @@
 import * as React from "react";
+import * as Yup from "yup";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import { Formik, Form, Field } from "formik";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Grid } from "@material-ui/core";
 import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { addVoter } from "./contract";
 import { useToasts } from "react-toast-notifications";
+import { validateAddress } from "@taquito/utils";
+import { FormikTextField } from "./FormikTextField";
 
 export default function AddVoterCard() {
   const { connected } = useWallet();
   const { addToast } = useToasts();
+
+  const validationSchema = Yup.object().shape({
+    voterAddress: Yup.string()
+      .test({
+        test: (value) => validateAddress(value) === 3,
+        message: "Invalid Address",
+      })
+      .required("Required"),
+  });
   const handleSubmit = async (values: any, helper: any) => {
     if (connected) {
       try {
@@ -39,23 +51,24 @@ export default function AddVoterCard() {
         subheader="Add a new voter to the polls"
       />
       <CardContent>
-        <Formik initialValues={{ voterAddress: "" }} onSubmit={handleSubmit}>
-          {({ setFieldValue, errors, touched }) => (
+        <Formik
+          initialValues={{ voterAddress: "" }}
+          onSubmit={handleSubmit}
+          validationSchema={validationSchema}
+          validateOnChange
+          validateOnBlur
+        >
+          {({ setFieldValue, errors, touched, isValid, dirty, values }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
                 <Grid item>
                   <Field
-                    component={TextField}
+                    component={FormikTextField}
                     name="voterAddress"
                     type="text"
                     label="Voter Address"
                     placeholder="e.g. tz1...."
                     fullWidth
-                    onChange={(e: any) => {
-                      setFieldValue("voterAddress", e.target.value);
-                    }}
-                    error={touched.voterAddress && Boolean(errors.voterAddress)}
-                    helperText={touched.voterAddress ? errors.voterAddress : ""}
                   />
                 </Grid>
                 <Grid item>
@@ -63,7 +76,7 @@ export default function AddVoterCard() {
                     variant="contained"
                     fullWidth
                     type="submit"
-                    disabled={!connected}
+                    disabled={!connected || !isValid || !dirty}
                   >
                     Submit
                   </Button>
