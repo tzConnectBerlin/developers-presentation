@@ -16,7 +16,7 @@ export default function AddVoterCard() {
       try {
         const hash = await addVoter(values.voterAddress);
         if (hash) {
-          addToast(`Tx Submitted: ${hash}`, {
+          addToast("Tx Submitted", {
             appearance: "success",
             autoDismiss: true,
           });

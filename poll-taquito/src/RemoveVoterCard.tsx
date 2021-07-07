@@ -16,7 +16,7 @@ export default function RemoveVoterCard() {
       try {
         const hash = await removeVoter(values.voterAddress);
         if (hash) {
-          addToast(`Tx Submitted: ${hash}`, {
+          addToast("Tx Submitted", {
             appearance: "success",
             autoDismiss: true,
           });

@@ -21,7 +21,7 @@ export default function CreatePollCard() {
           values.noOfOptions
         );
         if (hash) {
-          addToast(`Tx Submitted: ${hash}`, {
+          addToast("Tx Submitted", {
             appearance: "success",
             autoDismiss: true,
           });
