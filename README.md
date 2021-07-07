@@ -15,6 +15,7 @@ Here are links to some of the things mentioned in the presentation:
 
 ### General docs and links
 - Developers' site https://developers.tezos.com/
+- Beacon (wallet connection) https://www.walletbeacon.io/
 
 ### Development tools
 - Flextesa https://gitlab.com/tezos/flextesa
