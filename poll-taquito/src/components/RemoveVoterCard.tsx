@@ -6,7 +6,7 @@ import CardContent from "@material-ui/core/CardContent";
 import { Formik, Form, Field } from "formik";
 import { Button, Grid } from "@material-ui/core";
 import { useWallet } from "@tz-contrib/react-wallet-provider";
-import { removeVoter } from "./contract";
+import { removeVoter } from "../contract";
 import { useToasts } from "react-toast-notifications";
 import { validateAddress } from "@taquito/utils";
 import { FormikTextField } from "./FormikTextField";
