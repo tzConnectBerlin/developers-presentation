@@ -9,8 +9,11 @@ import { useWallet } from "@tz-contrib/react-wallet-provider";
 import { vote } from "./contract";
 import { useToasts } from "react-toast-notifications";
 import { FormikTextField } from "./FormikTextField";
+import { useParams } from "react-router-dom";
 
 export default function VoteCard() {
+  const poll = useParams();
+  console.log(poll);
   const { connected } = useWallet();
   const { addToast } = useToasts();
   const validationSchema = Yup.object().shape({
@@ -52,15 +55,24 @@ export default function VoteCard() {
           {({ setFieldValue, errors, touched, isValid, dirty }) => (
             <Form>
               <Grid direction="column" container spacing={3}>
-                <Grid item>
+                { Object.keys(poll).length !== 0 ? (
                   <Field
-                    component={FormikTextField}
                     name="pollId"
-                    type="text"
+                    type="hidden"
                     label="Poll ID"
-                    fullWidth
+                    value={ poll }
                   />
-                </Grid>
+                ) : (
+                  <Grid item>
+                    <Field
+                      component={FormikTextField}
+                      name="pollId"
+                      type="text"
+                      label="Poll ID"
+                      fullWidth
+                    />
+                  </Grid>
+                )}
                 <Grid item>
                   <Field
                     component={FormikTextField}
