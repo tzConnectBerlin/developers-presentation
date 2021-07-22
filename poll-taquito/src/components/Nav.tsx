@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 export default function Nav() {
   // const { ... } = useParams();
-  const { connected, disconnect, activeAccount, connect } = useWallet();
+  const { disconnect, activeAccount, connect } = useWallet();
   return (
     <AppBar position="static">
       <Toolbar>

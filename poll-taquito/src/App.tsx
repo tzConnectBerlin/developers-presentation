@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useBeaconWallet, useWallet } from "@tz-contrib/react-wallet-provider";
+import { useBeaconWallet } from "@tz-contrib/react-wallet-provider";
 import { initPollContract, initTezos, setWalletProvider } from "./contract";
 import CreatePollCard from "./components/CreatePollCard";
 import AddVoterCard from "./components/AddVoterCard";
@@ -18,7 +18,7 @@ const RPC_URL =
 const CONTRACT_ADDRESS = process.env.REACT_APP_CONTRACT_ADDRESS;
 
 function App() {
-  const { connected, disconnect, activeAccount, connect } = useWallet();
+  // const { connected, disconnect, activeAccount, connect } = useWallet();
   const beaconWallet = useBeaconWallet();
   React.useEffect(() => {
     initTezos(RPC_URL);
