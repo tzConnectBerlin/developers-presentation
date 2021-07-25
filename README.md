@@ -1,13 +1,9 @@
-# Developers presentation
+# Hicvote
+### A voting tool for Hicathon and Hic Et Nunc
 
-This repo contains the most recent version of a presentation we made for developers, and the materials we made for it. In particular, here you will find:
+More info coming soon.
 
-- Smart contracts in CameLIGO and SmartPy which implement a simple voting mechanism
-- Taquito and PyTezos code to work with this contract
-
-Here are links to some of the things mentioned in the presentation:
-
-### Languages
+### Language Docs
 - LIGO https://ligolang.org/
 - SmartPy https://smartpy.io/
 - Taquito https://tezostaquito.io/
@@ -36,3 +32,5 @@ Michelson https://tezos.gitlab.io/active/michelson.html
 
 ### Public nodes
 - a list from the Taquito team https://tezostaquito.io/docs/rpc_nodes/
+
+Developed with the help of [TzConnect](https://github.com/tzConnectBerlin) and Hicathon
