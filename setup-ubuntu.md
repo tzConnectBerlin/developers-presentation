@@ -28,6 +28,7 @@ sudo apt-get install tezos-client
 wget https://ligolang.org/bin/linux/ligo && sudo mv ligo /usr/local/bin && sudo chmod 755 /usr/local/bin/ligo
 
 python3 -m pip install pytezos
+bash <(curl -s https://smartpy.io/cli/install.sh)
 
 
 ```
