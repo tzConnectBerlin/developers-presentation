@@ -12,6 +12,10 @@ Here are links to some of the things mentioned in the presentation:
 - Taquito https://tezostaquito.io/
 - PyTezos https://pytezos.org/
 
+### Command line tools
+- Ubuntu and Brew packages https://github.com/serokell/tezos-packaging
+- Official install https://tezos.gitlab.io/introduction/howtoget.html
+
 ### General docs and links
 - Developers' site https://opentezos.com/
 - Beacon (wallet connection) https://www.walletbeacon.io/
