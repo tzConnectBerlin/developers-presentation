@@ -7,14 +7,13 @@ This repo contains the most recent version of a presentation we made for develop
 
 Here are links to some of the things mentioned in the presentation:
 
-### Languages
+### Languages and SDKs
 - LIGO https://ligolang.org/
-- SmartPy https://smartpy.io/
 - Taquito https://tezostaquito.io/
 - PyTezos https://pytezos.org/
 
 ### General docs and links
-- Developers' site https://developers.tezos.com/
+- Developers' site https://opentezos.com/
 - Beacon (wallet connection) https://www.walletbeacon.io/
 
 ### Development tools
@@ -26,13 +25,9 @@ Michelson https://tezos.gitlab.io/active/michelson.html
 
 ### Blockchain explorers
 
-- Better Call Dev https://better-call.dev
 - TzKT https://tzkt.io
+- Better Call Dev https://better-call.dev
 - https://tzstats.com
-- https://tezblock.io
-- https://teztracker.com/
-- https://arronax.io
-- https://mininax.io
 
 ### Public nodes
 - a list from the Taquito team https://tezostaquito.io/docs/rpc_nodes/
