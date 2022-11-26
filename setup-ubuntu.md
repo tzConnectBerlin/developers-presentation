@@ -25,7 +25,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo add-apt-repository ppa:serokell/tezos && sudo apt-get update
 sudo apt-get install tezos-client
 
-wget https://ligolang.org/bin/linux/ligo && sudo mv ligo /usr/local/bin && sudo chmod 755 /usr/local/bin/ligo
+wget https://gitlab.com/ligolang/ligo/-/jobs/3370208693/artifacts/raw/ligo && sudo mv ligo /usr/local/bin && sudo chmod 755 /usr/local/bin/ligo
 
 python3 -m pip install pytezos
 bash <(curl -s https://smartpy.io/cli/install.sh)
